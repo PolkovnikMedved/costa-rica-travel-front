@@ -10,6 +10,8 @@ import { GetLocationsComponent } from './get-locations/get-locations.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { GetRequestsComponent } from './get-requests/get-requests.component';
+import { GetTypesComponent } from './get-types/get-types.component';
+import { GetPartnersComponent } from './get-partners/get-partners.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { GetRequestsComponent } from './get-requests/get-requests.component';
     GetLocationsComponent,
     FooterComponent,
     HeaderComponent,
-    GetRequestsComponent
+    GetRequestsComponent,
+    GetTypesComponent,
+    GetPartnersComponent
   ],
   imports: [
     BrowserModule,

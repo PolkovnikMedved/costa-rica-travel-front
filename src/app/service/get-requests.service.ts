@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
 
-import { Request } from '../model/request';
-import { HandleError } from './HandleError';
+import {Request} from '../model/request';
+import {HandleError} from './handleError';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,6 @@ export class GetRequestsService {
 
   getRequests(): Observable<Request[]> {
     return this.http.get<Request[]>('http://localhost:8080/partner-request/all')
-      .pipe(catchError(HandleError.handleError('getRequest', [])));
+      .pipe(catchError(HandleError.handleError('getRequests', [])));
   }
 }

@@ -1,0 +1,23 @@
+<h1>Partner types</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Picture</th>
+      <th>Country</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let type of types">
+      <td>{{type.id}}</td>
+      <td>{{type.name}}</td>
+      <td><img [attr.alt]="type.name" [attr.src]="type.picture" src="" class="mini-picture"/></td>
+      <td>{{type.country}}</td>
+      <td>/</td>
+    </tr>
+  </tbody>
+</table>
