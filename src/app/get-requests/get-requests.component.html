@@ -1,0 +1,23 @@
+<h1>Partner Requests</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let request of requests">
+    <td>{{request.id}}</td>
+    <td>{{request.email}}</td>
+    <td>{{request.name}}</td>
+    <td>{{request.phone}}</td>
+    <td>/</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,7 +1,19 @@
-<h2>Locations</h2>
+<h1>Locations</h1>
 
-<div>
-  <p *ngFor="let location of locations">
-    id = {{location.id}} and name = {{location.name | uppercase}}
-  </p>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let location of locations">
+      <td>{{location.id}}</td>
+      <td>{{location.name}}</td>
+      <td>/</td>
+    </tr>
+  </tbody>
+</table>
