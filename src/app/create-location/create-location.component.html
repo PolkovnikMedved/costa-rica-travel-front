@@ -1,0 +1,26 @@
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+
+<div class="row">
+  <div class="col-1">
+    <a routerLink="/location/all"><fa name="chevron-left" size="2x"></fa></a>
+  </div>
+  <div class="col-11">
+    <h1>Create location</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+
+    <form name="location" #createLocation="ngForm" (ngSubmit)="onSubmit()">
+      <div id="location">
+        <div class="form-group">
+          <label for="location_name" class="form-control-label required">Name <span class="communist">*</span></label>
+          <input type="text" id="location_name" name="name" required class="form-control" [(ngModel)]="location.name" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!createLocation.form.valid">Save</button>
+    </form>
+
+  </div>
+</div>

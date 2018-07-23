@@ -1,42 +1,31 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
+import {HandleError} from './handleError';
 
 import {Location} from '../model/location';
+
+const httpOptions = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
+const baseUrl = 'http://localhost:8080/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetLocationsService {
 
-  private locationsUrl: 'http://localhost:8080/location/all';
-
   constructor(private http: HttpClient) { }
 
   getLocations(): Observable<Location[]> {
-    return this.http.get<Location[]>('http://localhost:8080/location/all')
+    const url = `${baseUrl}/location/all`;
+    return this.http.get<Location[]>(url)
       .pipe(
-        catchError(this.handleError('getLocations', [])));
+        catchError(HandleError.handleError('getLocations', [])));
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  createLocation(location: Location): Observable<Location> {
+    const url = `${baseUrl}/location/add`;
+    return this.http.post<Location>(url, location, httpOptions)
+      .pipe(catchError(HandleError.handleError<Location>('addLocation')));
   }
 }

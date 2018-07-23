@@ -1,6 +1,9 @@
 export class Request {
-  id: number;
-  email: string;
-  name: string;
-  phone: string;
+
+  constructor(
+    public id: number,
+    public email: string,
+    public name: string,
+    public phone: string
+  ) {}
 }
