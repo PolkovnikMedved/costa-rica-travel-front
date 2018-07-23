@@ -7,7 +7,7 @@ import {HandleError} from './handleError';
 import {Location} from '../model/location';
 
 const httpOptions = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
-const baseUrl = 'http://localhost:8080/';
+const baseUrl = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,11 @@ export class GetLocationsService {
     const url = `${baseUrl}/location/add`;
     return this.http.post<Location>(url, location, httpOptions)
       .pipe(catchError(HandleError.handleError<Location>('addLocation')));
+  }
+
+  deleteLocation(location: Location): void {
+    const url = `${baseUrl}/${location.id}/delete`;
+    this.http.delete(url)
+      .pipe(catchError(HandleError.handleError('deleteLocation', [])));
   }
 }

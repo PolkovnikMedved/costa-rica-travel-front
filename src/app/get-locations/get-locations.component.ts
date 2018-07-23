@@ -24,4 +24,8 @@ export class GetLocationsComponent implements OnInit {
     this.getLocationService.getLocations().subscribe(locations => this.locations = locations);
   }
 
+  deleteLocation(location: Location): void {
+    console.log('Clicked !');
+    this.getLocationService.deleteLocation(location);
+  }
 }

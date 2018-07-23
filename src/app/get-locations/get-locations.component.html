@@ -13,7 +13,7 @@
     <tr *ngFor="let location of locations">
       <td>{{location.id}}</td>
       <td>{{location.name}}</td>
-      <td>/</td>
+      <td><a href="#" (click)="deleteLocation(location)"><fa name="trash-o" ></fa></a></td>
     </tr>
   </tbody>
 </table>
