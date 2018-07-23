@@ -15,9 +15,9 @@ export class Partner {
   comment: string;
   specialOffer: boolean;
   offer: string;
-  // location: Location;
+  location: Location;
   tripAdvisorLink: string;
-  // type: Type;
+  type: Type;
   country: string;
-  // hotWords: HotWord[];
+  hotWords: HotWord[];
 }

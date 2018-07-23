@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { GetRequestsComponent } from './get-requests/get-requests.component';
 import { GetTypesComponent } from './get-types/get-types.component';
 import { GetPartnersComponent } from './get-partners/get-partners.component';
+import { GetPartnerComponent } from './get-partner/get-partner.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { GetPartnersComponent } from './get-partners/get-partners.component';
     HeaderComponent,
     GetRequestsComponent,
     GetTypesComponent,
-    GetPartnersComponent
+    GetPartnersComponent,
+    GetPartnerComponent
   ],
   imports: [
     BrowserModule,
