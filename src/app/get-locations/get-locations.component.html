@@ -1,3 +1,6 @@
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+<div *ngIf="error" class="alert alert-warning">{{error}}</div>
+
 <h1>Locations</h1>
 
 <table class="table">
@@ -13,7 +16,11 @@
     <tr *ngFor="let location of locations">
       <td>{{location.id}}</td>
       <td>{{location.name}}</td>
-      <td><a href="#" (click)="deleteLocation(location)"><fa name="trash-o" ></fa></a></td>
+      <td>
+        <a routerLink="/location/{{location.id}}/update" class="text-success"><fa name="edit"></fa></a>
+        &nbsp;
+        <span (click)="deleteLocation(location)" class="fake-button text-danger"><fa name="trash-o" ></fa></span>
+      </td>
     </tr>
   </tbody>
 </table>

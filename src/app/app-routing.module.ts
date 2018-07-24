@@ -10,18 +10,20 @@ import { CreateTypeComponent } from './create-type/create-type.component';
 import { GetPartnersComponent } from './get-partners/get-partners.component';
 import {GetPartnerComponent} from './get-partner/get-partner.component';
 import { CreatePartnerComponent } from './create-partner/create-partner.component';
+import {UpdateLocationComponent} from './update-location/update-location.component';
 
 const routes: Routes = [
-  { path: '',                   component: WelcomeComponent },
-  { path: 'location/all',       component: GetLocationsComponent },
-  { path: 'location/create',    component: CreateLocationComponent },
-  { path: 'request/all',        component: GetRequestsComponent },
-  { path: 'request/create',     component: CreateRequestComponent },
-  { path: 'type/all',           component: GetTypesComponent },
-  { path: 'type/create',        component: CreateTypeComponent },
-  { path: 'partner/all',        component: GetPartnersComponent },
-  { path: 'partner/create',     component: CreatePartnerComponent },
-  { path: 'partner/:id',        component: GetPartnerComponent },
+  { path: '',                     component: WelcomeComponent },
+  { path: 'location/all',         component: GetLocationsComponent },
+  { path: 'location/create',      component: CreateLocationComponent },
+  { path: 'location/:id/update',  component: UpdateLocationComponent },
+  { path: 'request/all',          component: GetRequestsComponent },
+  { path: 'request/create',       component: CreateRequestComponent },
+  { path: 'type/all',             component: GetTypesComponent },
+  { path: 'type/create',          component: CreateTypeComponent },
+  { path: 'partner/all',          component: GetPartnersComponent },
+  { path: 'partner/create',       component: CreatePartnerComponent },
+  { path: 'partner/:id',          component: GetPartnerComponent },
 ];
 
 @NgModule({

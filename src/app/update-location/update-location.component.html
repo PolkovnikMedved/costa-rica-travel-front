@@ -1,11 +1,12 @@
 <div *ngIf="message" class="alert alert-success">{{message}}</div>
+<div *ngIf="error" class="alert alert-warning">{{error}}</div>
 
 <div class="row">
   <div class="col-1">
     <a routerLink="/location/all"><fa name="chevron-left" size="2x"></fa></a>
   </div>
   <div class="col-11">
-    <h1>Create location</h1>
+    <h1>Update location <span *ngIf="location">{{location.name}}</span></h1>
   </div>
 </div>
 

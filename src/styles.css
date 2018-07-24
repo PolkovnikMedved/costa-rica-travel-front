@@ -19,6 +19,10 @@ main{
   height: auto;
 }
 
-.communist {
-  color: red;
+.fake-button {
+  cursor: pointer;
+}
+
+fa {
+  font-size: 1.3rem;
 }
