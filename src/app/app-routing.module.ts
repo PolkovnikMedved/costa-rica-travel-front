@@ -11,6 +11,7 @@ import { GetPartnersComponent } from './get-partners/get-partners.component';
 import {GetPartnerComponent} from './get-partner/get-partner.component';
 import { CreatePartnerComponent } from './create-partner/create-partner.component';
 import {UpdateLocationComponent} from './update-location/update-location.component';
+import {UpdateRequestComponent} from './update-request/update-request.component';
 
 const routes: Routes = [
   { path: '',                     component: WelcomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'location/:id/update',  component: UpdateLocationComponent },
   { path: 'request/all',          component: GetRequestsComponent },
   { path: 'request/create',       component: CreateRequestComponent },
+  { path: 'request/:id/update',   component: UpdateRequestComponent },
   { path: 'type/all',             component: GetTypesComponent },
   { path: 'type/create',          component: CreateTypeComponent },
   { path: 'partner/all',          component: GetPartnersComponent },

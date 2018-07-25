@@ -1,3 +1,6 @@
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+
 <h1>Partner Requests</h1>
 
 <table class="table">
@@ -17,7 +20,11 @@
     <td>{{request.email}}</td>
     <td>{{request.name}}</td>
     <td>{{request.phone}}</td>
-    <td>/</td>
+    <td>
+      <a routerLink="/request/{{request.id}}/update" class="text-success"><fa name="edit"></fa></a>
+      &nbsp;
+      <span (click)="deleteRequest(request)" class="fake-button text-danger"><fa name="trash-o" ></fa></span>
+    </td>
   </tr>
   </tbody>
 </table>

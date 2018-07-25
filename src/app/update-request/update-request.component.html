@@ -1,0 +1,35 @@
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+<div class="row">
+  <div class="col-1">
+    <a routerLink="/request/all"><fa name="chevron-left" size="2x"></fa></a>
+  </div>
+  <div class="col-11">
+    <h1>Update partner request <span *ngIf="request">{{request.name}}</span></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+
+    <form name="partner_request" #createRequest="ngForm" (ngSubmit)="onSubmit()">
+      <div id="partner_request">
+        <div class="form-group">
+          <label for="partner_request_email" class="form-control-label required">Email <span class="text-danger">*</span></label>
+          <input type="email" id="partner_request_email" name="partner_request[email]" [(ngModel)]="request.email" required class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="partner_request_name" class="form-control-label required">Name <span class="text-danger">*</span></label>
+          <input type="text" id="partner_request_name" name="partner_request[name]" [(ngModel)]="request.name" required class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="partner_request_phone" class="form-control-label required">Phone <span class="text-danger">*</span></label>
+          <input type="text" id="partner_request_phone" name="partner_request[phone]" [(ngModel)]="request.phone" required class="form-control" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!createRequest.form.valid">Save</button>
+    </form>
+
+  </div>
+</div>

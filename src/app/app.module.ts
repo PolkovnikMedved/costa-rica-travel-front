@@ -19,6 +19,7 @@ import { CreateRequestComponent } from './create-request/create-request.componen
 import { CreatePartnerComponent } from './create-partner/create-partner.component';
 import { CreateTypeComponent } from './create-type/create-type.component';
 import { UpdateLocationComponent } from './update-location/update-location.component';
+import { UpdateRequestComponent } from './update-request/update-request.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { UpdateLocationComponent } from './update-location/update-location.compo
     CreateRequestComponent,
     CreatePartnerComponent,
     CreateTypeComponent,
-    UpdateLocationComponent
+    UpdateLocationComponent,
+    UpdateRequestComponent
   ],
   imports: [
     BrowserModule,
