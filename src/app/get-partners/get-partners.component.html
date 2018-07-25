@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let partner of page.content">
+    <tr *ngFor="let partner of page.content | paginate: {itemsPerPage: 15 , currentPage: p, totalItems: page.totalElements }">
       <td>{{partner.id}}</td>
       <td>{{partner.name}}</td>
       <td>{{partner.email}}</td>
@@ -24,4 +24,8 @@
   </tbody>
 </table>
 
-<a routerLink="/partner/create" class="btn btn-outline-success">Create</a> 
+<a routerLink="/partner/create" class="btn btn-outline-success">Create</a>
+
+<div>
+  <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
+</div>

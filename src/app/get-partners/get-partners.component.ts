@@ -10,17 +10,20 @@ import {PageablePartner} from '../model/pageablePartner';
 export class GetPartnersComponent implements OnInit {
 
   page: PageablePartner;
+  p = 1;
 
   constructor(private getPartnersService: GetPartnersService) { }
 
   ngOnInit() {
-    this.getPartners();
+    this.onPageChange(1);
   }
 
   /*
     get partners asynchronous
   */
-  getPartners(): void {
-    this.getPartnersService.getPartners().subscribe(pageablePartner => this.page = pageablePartner );
+  onPageChange(pageNumber: number): void {
+    this.p = pageNumber;
+    this.getPartnersService.getPartners(pageNumber)
+      .subscribe(pageablePartner => this.page = pageablePartner);
   }
 }

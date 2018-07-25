@@ -16,9 +16,9 @@ export class GetPartnersService {
 
   constructor(private http: HttpClient) { }
 
-  getPartners(): Observable<PageablePartner> {
+  getPartners(page: number): Observable<PageablePartner> {
 
-    const params = new HttpParams().set('page', '5');
+    const params = new HttpParams().set('page', `${page}`);
 
     return this.http.get<PageablePartner>('http://localhost:8080/partner/all', {params: params})
       .pipe(

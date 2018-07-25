@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +21,6 @@ import { CreatePartnerComponent } from './create-partner/create-partner.componen
 import { CreateTypeComponent } from './create-type/create-type.component';
 import { UpdateLocationComponent } from './update-location/update-location.component';
 import { UpdateRequestComponent } from './update-request/update-request.component';
-
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { UpdateRequestComponent } from './update-request/update-request.componen
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
