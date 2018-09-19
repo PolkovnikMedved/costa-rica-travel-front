@@ -1,6 +1,7 @@
 export class Type {
-  id: number;
-  name: string;
-  picture: string;
-  country: string;
+  constructor(
+    public id: number,
+    public name: string,
+    public country: string
+  ) {}
 }

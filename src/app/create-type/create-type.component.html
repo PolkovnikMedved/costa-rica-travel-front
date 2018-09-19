@@ -1,3 +1,37 @@
-<p>
-  create-type works!
-</p>
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+<div class="row">
+  <div class="col-1">
+    <a routerLink="/type/all"><fa name="chevron-left" size="2x"></fa></a>
+  </div>
+  <div class="col-11">
+    <h1>Create partner type</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+
+    <form name="partner_type1" #createType="ngForm" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+      <div id="partner_type1">
+        <div class="form-group">
+          <label for="partner_type1_name" class="form-control-label required">Name</label>
+          <input type="text" id="partner_type1_name" [(ngModel)]="type.name" name="name" required class="form-control" />
+        </div>
+        <div class="form-group">
+          <div class="custom-file">
+            <input type="file" (change)="onFileChanged($event)" id="partner_type1_imageFile" name="imageFile" class="custom-file-input" />
+            <label for="partner_type1_imageFile" class="custom-file-label">Image file</label>
+          </div>
+      </div>
+        <div class="form-group">
+          <label for="partner_type1_country" class="form-control-label required">Country</label>
+          <input type="text" id="partner_type1_country" [(ngModel)]="type.country" name="country" required class="form-control" />
+        </div>
+      </div>
+      <button class="btn btn-success" [disabled]="!createType.form.valid">Save</button>
+    </form>
+
+  </div>
+</div>

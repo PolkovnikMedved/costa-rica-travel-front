@@ -19,13 +19,15 @@
       <td>{{partner.email}}</td>
       <td>{{partner.phone}}</td>
       <td>{{partner.country}}</td>
-      <td><a routerLink="/partner/{{partner.id}}">A</a></td>
+      <td>
+        <a routerLink="/partner/{{partner.id}}"><fa name="eye"></fa></a>
+      </td>
     </tr>
   </tbody>
 </table>
 
-<a routerLink="/partner/create" class="btn btn-outline-success">Create</a>
-
-<div>
+<div class="row justify-content-center">
   <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
 </div>
+
+<a routerLink="/partner/create" class="btn btn-outline-success">Create</a>
