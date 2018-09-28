@@ -9,8 +9,8 @@ import {GetTypesService} from '../service/get-types.service';
 })
 export class CreateTypeComponent implements OnInit {
 
-  type: Type;
-  file: any;
+  type = new Type(undefined, '', '');
+  file: File;
   message = '';
   error = '';
 
@@ -24,5 +24,19 @@ export class CreateTypeComponent implements OnInit {
     this.file = event.target.files[0];
   }
 
-  onSubmit(): void {}
+  /*
+      this.getRequestsService.createRequest(this.request)
+      .subscribe(request => {
+        if (request.id !== undefined) {
+          this.showAlert();
+        }
+      });
+   */
+
+  onSubmit(): void {
+    this.getTypesService.uploadFile(this.file, this.type)
+      .subscribe(request => {
+          console.log(request.toString());
+    });
+  }
 }
