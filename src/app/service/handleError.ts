@@ -1,4 +1,5 @@
-import {Observable, of} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 export class HandleError {
   /**
@@ -19,5 +20,9 @@ export class HandleError {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  public static handleErrorResponse(error: HttpErrorResponse) {
+    return throwError(error.status || 'Internal Server Error');
   }
 }

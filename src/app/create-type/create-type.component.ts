@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Type} from '../model/type';
 import {GetTypesService} from '../service/get-types.service';
 
@@ -20,23 +20,30 @@ export class CreateTypeComponent implements OnInit {
   }
 
   onFileChanged(event) {
-    console.log('Type = ' + JSON.stringify(this.type));
     this.file = event.target.files[0];
   }
 
-  /*
-      this.getRequestsService.createRequest(this.request)
-      .subscribe(request => {
-        if (request.id !== undefined) {
-          this.showAlert();
-        }
-      });
-   */
-
   onSubmit(): void {
+    this.message = '';
+    this.error = '';
     this.getTypesService.uploadFile(this.file, this.type)
-      .subscribe(request => {
-          console.log(request.toString());
-    });
+      .subscribe(
+        data => {
+          if (data.id !== undefined) {
+            this.showMessage();
+          } else {
+            this.showError('undefined');
+          }
+        },
+        err => this.showError(err)
+        );
+  }
+
+  showMessage() {
+    this.message = 'The partner type has been created';
+  }
+
+  showError(code) {
+    this.error = `Could not create partner type. Server returned ${code} status.`;
   }
 }
