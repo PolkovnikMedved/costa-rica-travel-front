@@ -1,3 +1,6 @@
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
 <h1>Partner types</h1>
 
 <table class="table">
@@ -18,9 +21,9 @@
       <td><img [attr.alt]="type.name" [attr.src]="type.picture" src="" class="mini-picture"/></td>
       <td>{{type.country}}</td>
       <td>
-        <a href="#" class="text-success"><fa name="edit"></fa></a>
+        <a routerLink="/type/{{type.id}}/update" class="text-success"><fa name="edit"></fa></a>
         &nbsp;
-        <span class="fake-button text-danger"><fa name="trash-o" ></fa></span>
+        <span (click)="deleteType(type)" class="fake-button text-danger"><fa name="trash-o" ></fa></span>
       </td>
     </tr>
   </tbody>
