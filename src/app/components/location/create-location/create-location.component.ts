@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../model/location';
-import {GetLocationsService} from '../service/get-locations.service';
+import { Location } from '../../../model/location';
+import {GetLocationsService} from '../../../service/get-locations.service';
 
 @Component({
   selector: 'app-create-location',

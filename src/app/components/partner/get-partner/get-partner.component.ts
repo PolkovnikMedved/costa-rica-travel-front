@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Partner} from '../model/partner';
-import {GetPartnersService} from '../service/get-partners.service';
+import {Partner} from '../../../model/partner';
+import {GetPartnersService} from '../../../service/get-partners.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

@@ -1,0 +1,105 @@
+<div *ngIf="message" class="alert alert-success">{{message}}</div>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+<div class="row">
+  <div class="col-1">
+    <a routerLink="/partner/all"><fa name="chevron-left" size="2x"></fa></a>
+  </div>
+  <div class="col-11">
+    <h1>Create partner</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+
+    <form name="partner" #createPartner="ngForm" (ngSubmit)=onSubmit()>
+
+      <div id="partner">
+        <div class="form-group">
+          <label for="partner_name" class="form-control-label" required>Name <span class="text-danger">*</span></label>
+          <input type="text" id="partner_name" name="partner_name" required class="form-control" [(ngModel)]="partner.name"/>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_email" class="form-control-label" required>Email <span class="text-danger">*</span></label>
+          <input type="email" id="partner_email" name="partner_email" required class="form-control" [(ngModel)]="partner.email"/>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_phone" class="form-control-label" required>Phone <span class="text-danger">*</span></label>
+          <input type="text" id="partner_phone" name="partner_phone" required class="form-control" [(ngModel)]="partner.phone"/>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_address" class="form-control-label" required>Address <span class="text-danger">*</span></label>
+          <textarea id="partner_address" name="partner_address" required class="form-control" [(ngModel)]="partner.address"></textarea>
+        </div>
+
+        <!-- TODO upload file (picture) -->
+
+
+        <div class="form-group">
+          <label for="partner_latitude" class="form-control-label" required>Latitude <span class="text-danger">*</span></label>
+          <input type="text" id="partner_latitude" name="partner_latitude" required class="form-control" [(ngModel)]="partner.latitude"/>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_longitude" class="form-control-label" required>Longitude <span class="text-danger">*</span></label>
+          <input type="text" id="partner_longitude" name="partner_longitude" required class="form-control" [(ngModel)]="partner.longitude"/>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_horary" class="form-control-label" required>Horary <span class="text-danger">*</span></label>
+          <input type="text" id="partner_horary" name="partner_horary" required class="form-control" [(ngModel)]="partner.horary"/>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_comment" class="form-control-label" required>Comment <span class="text-danger">*</span></label>
+          <textarea id="partner_comment" name="partner_comment" required class="form-control" [(ngModel)]="partner.comment"></textarea>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="specialOffer" id="special-offer" [(ngModel)]="partner.specialOffer">
+          <label class="form-check-label" for="special-offer">Special offer</label>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_offer" class="form-control-label" required>Offer <span class="text-danger">*</span></label>
+          <input type="text" id="partner_offer" name="partner_offer" required class="form-control" [(ngModel)]="partner.offer"/>
+        </div>
+
+        <!-- TODO Validate location -->
+        <div class="form-group">
+          <label for="partner_location" class="form-control-label" required>Choose location <span class="text-danger">*</span></label>
+          <select id="partner_location" class="form-control" [(ngModel)]="partner.location" name="partner_location">
+            <option *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_trip_advisor_link" class="form-control-label" required>Trip Advisor Link <span class="text-danger">*</span></label>
+          <input type="text" id="partner_trip_advisor_link" name="partner_trip_advisor_link" required class="form-control" [(ngModel)]="partner.tripAdvisorLink" />
+        </div>
+
+        <!-- TODO Validate Partner type -->
+        <div class="form-group">
+          <label for="partner_partner_type" required>Choose partner type <span class="text-danger">*</span></label>
+          <select id="partner_partner_type" class="form-control" [(ngModel)]="partner.type" name="partner_type">
+            <option *ngFor="let type of types" [ngValue]="type">{{type.name + ' - ' + type.country}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_country" class="form-control-label" required>Country <span class="text-danger">*</span></label>
+          <input type="text" id="partner_country" name="partner_country" required class="form-control" [(ngModel)]="partner.country" />
+        </div>
+        <!-- TODO set Hot words -->
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!createPartner.form.valid">Save</button>
+    </form>
+
+  </div>
+</div>
+

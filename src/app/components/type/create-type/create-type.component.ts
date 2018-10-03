@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Type} from '../model/type';
-import {GetTypesService} from '../service/get-types.service';
+import {Type} from '../../../model/type';
+import {GetTypesService} from '../../../service/get-types.service';
 
 @Component({
   selector: 'app-create-type',

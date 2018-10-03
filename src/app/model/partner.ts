@@ -3,21 +3,25 @@ import {Location} from './location';
 import {HotWord} from './hotWord';
 
 export class Partner {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  picture: string;
-  latitude: number;
-  longitude: number;
-  horary: string;
-  comment: string;
-  specialOffer: boolean;
-  offer: string;
-  location: Location;
-  tripAdvisorLink: string;
-  type: Type;
-  country: string;
-  hotWords: HotWord[];
+
+  constructor
+  (
+    public id: number,
+    public name: string,
+    public email: string,
+    public phone: string,
+    public address: string,
+    public picture: string,
+    public latitude: number,
+    public longitude: number,
+    public horary: string,
+    public comment: string,
+    public specialOffer: boolean,
+    public offer: string,
+    public location: Location,
+    public tripAdvisorLink: string,
+    public type: Type,
+    public country: string,
+    public hotWords: HotWord[],
+  ) {}
 }

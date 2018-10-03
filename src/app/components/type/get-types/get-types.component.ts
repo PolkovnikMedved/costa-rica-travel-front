@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Type } from '../model/type';
-import { GetTypesService } from '../service/get-types.service';
+import { Type } from '../../../model/type';
+import { GetTypesService } from '../../../service/get-types.service';
 import {HttpResponse} from '@angular/common/http';
 
 @Component({

@@ -21,6 +21,8 @@
       <td>{{partner.country}}</td>
       <td>
         <a routerLink="/partner/{{partner.id}}"><fa name="eye"></fa></a>
+        &nbsp;
+        <span (click)="deletePartner(partner)" class="fake-button text-danger"><fa name="trash-o" ></fa></span>
       </td>
     </tr>
   </tbody>

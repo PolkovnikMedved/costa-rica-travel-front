@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Request} from '../model/request';
-import {GetRequestsService} from '../service/get-requests.service';
+import {Request} from '../../../model/request';
+import {GetRequestsService} from '../../../service/get-requests.service';
 import {HttpResponse} from '@angular/common/http';
 
 @Component({
