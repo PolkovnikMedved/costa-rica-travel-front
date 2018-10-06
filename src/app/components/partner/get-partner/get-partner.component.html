@@ -73,7 +73,7 @@
       <th>Type</th>
       <td>{{ partner.type.name }}</td>
     </tr>
-    <tr>
+    <tr *ngIf="partner.hotWords.length > 0">
       <th>Hot Words</th>
       <td>
         <ul *ngFor="let hot_word of partner.hotWords">
