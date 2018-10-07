@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 import { Type } from '../../../model/type';
 import { GetTypesService } from '../../../service/get-types.service';
 import {HttpResponse} from '@angular/common/http';
+import {ModalDialogService, SimpleModalComponent} from 'ngx-modal-dialog';
 
 @Component({
   selector: 'app-get-types',
@@ -15,7 +16,11 @@ export class GetTypesComponent implements OnInit {
   message = '';
   error = '';
 
-  constructor(private getTypesService: GetTypesService) { }
+  constructor(
+    private getTypesService: GetTypesService,
+    private modalService: ModalDialogService,
+    private viewRef: ViewContainerRef
+  ) { }
 
   ngOnInit() {
     this.getTypes();
@@ -29,6 +34,31 @@ export class GetTypesComponent implements OnInit {
   }
 
   deleteType(type: Type): void {
+    this.modalService.openDialog(this.viewRef, {
+      title: 'Please confirm',
+      childComponent: SimpleModalComponent,
+      data: {
+        text: 'Are you sure that you want to delete partner type ?'
+      },
+      settings: {
+        closeButtonClass: 'close theme-icon-close'
+      },
+      actionButtons: [
+        {
+          text: 'Yes',
+          buttonClass: 'btn btn-success',
+          onAction: () => { this.deletePartnerType(type); return true; }
+        },
+        {
+          text: 'No',
+          buttonClass: 'btn btn-danger',
+          onAction: () => true
+        }
+      ]
+    });
+  }
+
+  deletePartnerType(type: Type) {
     this.types = this.types.filter(t => t !== type);
     this.getTypesService.deleteType(type).subscribe(
       (response: HttpResponse<Type>) => {

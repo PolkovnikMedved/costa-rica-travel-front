@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {GetPartnersService} from '../../../service/get-partners.service';
 import {PageablePartner} from '../../../model/pageablePartner';
 import {Partner} from '../../../model/partner';
-import {Type} from '../../../model/type';
 import {HttpResponse} from '@angular/common/http';
+import {ModalDialogService, SimpleModalComponent} from 'ngx-modal-dialog';
 
 @Component({
   selector: 'app-get-partners',
@@ -17,7 +17,11 @@ export class GetPartnersComponent implements OnInit {
   message = '';
   error = '';
 
-  constructor(private getPartnersService: GetPartnersService) { }
+  constructor(
+    private getPartnersService: GetPartnersService,
+    private modalService: ModalDialogService,
+    private viewRef: ViewContainerRef
+    ) { }
 
   ngOnInit() {
     this.onPageChange(1);
@@ -33,6 +37,31 @@ export class GetPartnersComponent implements OnInit {
   }
 
   deletePartner(partner: Partner): void {
+    this.modalService.openDialog(this.viewRef, {
+      title: 'Please confirm',
+      childComponent: SimpleModalComponent,
+      data: {
+        text: 'Are you sure that you want to delete partner type ?'
+      },
+      settings: {
+        closeButtonClass: 'close theme-icon-close'
+      },
+      actionButtons: [
+        {
+          text: 'Yes',
+          buttonClass: 'btn btn-success',
+          onAction: () => { this.deleteThePartner(partner); return true; }
+        },
+        {
+          text: 'No',
+          buttonClass: 'btn btn-danger',
+          onAction: () => true
+        }
+      ]
+    });
+  }
+
+  deleteThePartner(partner: Partner): void {
     this.getPartnersService.deletePartner(partner)
       .subscribe((response: HttpResponse<Partner>) => {
         if (response.status === 200) {

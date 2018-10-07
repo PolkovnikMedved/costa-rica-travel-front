@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import { Location } from '../../../model/location';
 import { GetLocationsService } from '../../../service/get-locations.service';
 import {HttpResponse} from '@angular/common/http';
+import {ModalDialogService, SimpleModalComponent} from 'ngx-modal-dialog';
 
 @Component({
   selector: 'app-get-locations',
@@ -14,7 +15,11 @@ export class GetLocationsComponent implements OnInit {
   message = '';
   error = '';
 
-  constructor(private getLocationService: GetLocationsService) { }
+  constructor(
+    private getLocationService: GetLocationsService,
+    private modalService: ModalDialogService,
+    private viewRef: ViewContainerRef
+  ) { }
 
   ngOnInit() {
     this.getLocations();
@@ -28,7 +33,31 @@ export class GetLocationsComponent implements OnInit {
   }
 
   deleteLocation(location: Location): void {
-    console.log('Clicked !');
+    this.modalService.openDialog(this.viewRef, {
+      title: 'Please confirm',
+      childComponent: SimpleModalComponent,
+      data: {
+        text: 'Are you sure that you want to delete the location ?'
+      },
+      settings: {
+        closeButtonClass: 'close theme-icon-close'
+      },
+      actionButtons: [
+        {
+          text: 'Yes',
+          buttonClass: 'btn btn-success',
+          onAction: () => { this.deleteTheLocation(location); return true; }
+        },
+        {
+          text: 'No',
+          buttonClass: 'btn btn-danger',
+          onAction: () => true
+        }
+      ]
+    });
+  }
+
+  deleteTheLocation(location: Location): void {
     this.getLocationService.deleteLocation(location)
       .subscribe((res: HttpResponse<any>) => {
         if (res.status === 200) {

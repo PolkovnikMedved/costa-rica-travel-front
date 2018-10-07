@@ -22,6 +22,7 @@ import { CreateTypeComponent } from './components/type/create-type/create-type.c
 import { UpdateLocationComponent } from './components/location/update-location/update-location.component';
 import { UpdateRequestComponent } from './components/request/update-request/update-request.component';
 import { UpdateTypeComponent } from './components/type/update-type/update-type.component';
+import {ModalDialogModule} from 'ngx-modal-dialog';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { UpdateTypeComponent } from './components/type/update-type/update-type.c
     CreateTypeComponent,
     UpdateLocationComponent,
     UpdateRequestComponent,
-    UpdateTypeComponent
+    UpdateTypeComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { UpdateTypeComponent } from './components/type/update-type/update-type.c
     AppRoutingModule,
     HttpClientModule,
     AngularFontAwesomeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ModalDialogModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

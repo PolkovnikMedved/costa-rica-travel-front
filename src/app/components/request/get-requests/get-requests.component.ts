@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 import {Request} from '../../../model/request';
 import {GetRequestsService} from '../../../service/get-requests.service';
 import {HttpResponse} from '@angular/common/http';
+import {ModalDialogService, SimpleModalComponent} from 'ngx-modal-dialog';
 
 @Component({
   selector: 'app-get-requests',
@@ -15,7 +16,11 @@ export class GetRequestsComponent implements OnInit {
   message = '';
   error = '';
 
-  constructor(private getRequestsService: GetRequestsService) { }
+  constructor(
+    private getRequestsService: GetRequestsService,
+    private modalService: ModalDialogService,
+    private viewRef: ViewContainerRef
+    ) { }
 
   ngOnInit() {
     this.getRequests();
@@ -29,7 +34,31 @@ export class GetRequestsComponent implements OnInit {
   }
 
   deleteRequest(request: Request): void {
-    console.log('clicked');
+    this.modalService.openDialog(this.viewRef, {
+      title: 'Please confirm',
+      childComponent: SimpleModalComponent,
+      data: {
+        text: 'Are you sure that you want to delete partner type ?'
+      },
+      settings: {
+        closeButtonClass: 'close theme-icon-close'
+      },
+      actionButtons: [
+        {
+          text: 'Yes',
+          buttonClass: 'btn btn-success',
+          onAction: () => { this.deleteTheRequest(request); return true; }
+        },
+        {
+          text: 'No',
+          buttonClass: 'btn btn-danger',
+          onAction: () => true
+        }
+      ]
+    });
+  }
+
+  deleteTheRequest(request: Request): void {
     this.getRequestsService.deleteRequest(request)
       .subscribe((res: HttpResponse<any>) => {
         if (res.status === 200) {
@@ -40,7 +69,7 @@ export class GetRequestsComponent implements OnInit {
           this.message = 'The partner request has been deleted.';
           window.scrollTo(0, 0);
         } else {
-        this.error = 'An error occurred: could not delete the partner request.';
+          this.error = 'An error occurred: could not delete the partner request.';
         }
       });
   }
