@@ -16,12 +16,19 @@
     <form name="partner_type" #updateType="ngForm" (ngSubmit)="onSubmit()">
       <div id="partner_type">
         <div class="form-group">
-          <label for="partner_type1_name" class="form-control-label required">Name</label>
+          <label for="partner_type1_name" class="form-control-label">Name <span class="text-danger">*</span></label>
           <input type="text" id="partner_type1_name" [(ngModel)]="type.name" name="name" required class="form-control" />
         </div>
 
         <div class="form-group">
-          <label for="partner_type1_country" class="form-control-label required">Country</label>
+          <div class="custom-file">
+            <input type="file" (change)="onFileChanged($event)" id="partner_type1_imageFile" name="file" class="custom-file-input" />
+            <label for="partner_type1_imageFile" class="custom-file-label">Image file</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="partner_type1_country" class="form-control-label">Country <span class="text-danger">*</span></label>
           <input type="text" id="partner_type1_country" [(ngModel)]="type.country" name="country" required class="form-control" />
         </div>
       </div>

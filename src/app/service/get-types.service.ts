@@ -37,10 +37,15 @@ export class GetTypesService {
       .pipe(catchError(HandleError.handleError<Type>(`get partner type with id = ${id}`)));
   }
 
-  updateType(type: Type): Observable<any> {
+  updateType(file: File, type: Type): Observable<Type> {
     const url = `${baseUrl}/partner-type/update`;
-    return this.http.put(url, type, httpOptions)
-      .pipe(catchError(HandleError.handleError<Type>('updatePartnerType')));
+    const uploadFile = new FormData();
+    if (file !== null && file.name) {
+      uploadFile.append('file', file, file.name);
+    }
+    uploadFile.append('partner-type', JSON.stringify(type));
+    return this.http.post<Type>(url, uploadFile)
+      .pipe(catchError(HandleError.handleErrorResponse));
   }
 
   deleteType(type: Type): any {

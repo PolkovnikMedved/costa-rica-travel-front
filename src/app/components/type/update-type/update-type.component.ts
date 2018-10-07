@@ -10,7 +10,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UpdateTypeComponent implements OnInit {
 
-  type: Type;
+  type = new Type(undefined, '', '');
+  file: File;
   message = '';
   error = '';
 
@@ -18,6 +19,10 @@ export class UpdateTypeComponent implements OnInit {
 
   ngOnInit() {
     this.getType();
+  }
+
+  onFileChanged(event) {
+    this.file = event.target.files[0];
   }
 
   getType(): void {
@@ -28,21 +33,22 @@ export class UpdateTypeComponent implements OnInit {
   onSubmit(): void {
     this.message = '';
     this.error = '';
-    this.getTypesService.updateType(this.type)
+    this.getTypesService.updateType(this.file, this.type)
       .subscribe(type => {
         if (type.id !== undefined) {
           this.showAlert();
         } else {
-          this.showError();
-        }
-      });
+          this.showError('');
+        }},
+        err => this.showError(err)
+      );
   }
 
   showAlert(): void {
     this.message = 'The partner type has been updated.';
   }
 
-  showError(): void {
-    this.error = 'An error occurred. Could not update the partner type.';
+  showError(errorCode): void {
+    this.error = `An error occurred. Could not update the partner type. Code : ${errorCode}`;
   }
 }

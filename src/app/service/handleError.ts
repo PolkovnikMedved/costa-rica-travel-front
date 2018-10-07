@@ -23,6 +23,7 @@ export class HandleError {
   }
 
   public static handleErrorResponse(error: HttpErrorResponse) {
+    console.log(error);
     return throwError(error.status || 'Internal Server Error');
   }
 }
